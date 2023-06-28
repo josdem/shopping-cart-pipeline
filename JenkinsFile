@@ -1,0 +1,27 @@
+#!/usr/bin/env groovy
+pipeline {
+  agent any
+    stages {
+      stage ('Build Shopping Cart Service Job') {
+        steps {
+          echo 'Starting Build Job'
+          build job: 'shopping-cart-service'
+          echo 'Done!'
+        }
+      }
+      stage('Move Shopping Cart Service') {
+        steps {
+          echo 'Moving'
+          sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/move-shopping-cart.sh"'
+          echo 'Done!'
+        }
+      }
+      stage('Starting') {
+        steps {
+          echo 'Starting Shopping Cart Service'
+          sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/start-shopping-cart.sh"'
+          echo 'Done!'
+        }
+      }
+   }
+}
