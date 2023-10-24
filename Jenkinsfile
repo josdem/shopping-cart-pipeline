@@ -5,7 +5,7 @@ pipeline {
     stage('Stopping') {
       steps {
         echo 'Stop shopping cart service'
-        sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/stop-shopping-cart.sh"'
+        sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/stop-shopping.sh"'
         echo 'Done!'
       }
     }
@@ -19,14 +19,14 @@ pipeline {
     stage('Moving') {
       steps {
         echo 'Move shopping cart service'
-        sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/move-shopping-cart.sh"'
+        sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/move-shopping.sh"'
         echo 'Done!'
       }
     }
     stage('Starting') {
       steps {
         echo 'Starting shopping cart service'
-        sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/start-shopping-cart.sh"'
+        sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/start-shopping.sh"'
         echo 'Done!'
       }
     }
